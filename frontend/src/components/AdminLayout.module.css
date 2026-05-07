@@ -1,0 +1,654 @@
+/* AdminLayout.module.css */
+
+/* Design Tokens */
+:root {
+  --gold-primary: #f59e0b;
+  --gold-light: #fbbf24;
+  --gold-dark: #d97706;
+  --luxury-black: #1f2937;
+  --luxury-dark: #374151;
+  --cream: #fef3c7;
+  --white: #ffffff;
+  --black: #000000;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Main layout */
+.layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 18rem;
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border-right: 1px solid #374151;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.5);
+}
+
+.sidebarHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid #374151;
+}
+
+.sidebarBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.sidebarLogo {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebarLogoIcon {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.sidebarLogoText {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebarSubtitle {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  font-weight: 600;
+  padding: 0 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Navigation */
+.sidebarNav {
+  flex: 1;
+  padding: 1rem 0;
+  overflow-y: auto;
+}
+
+.navSection {
+  margin-bottom: 1.5rem;
+}
+
+.navSectionTitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  font-weight: 600;
+  padding: 0 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #d1d5db;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-bottom: 0.25rem;
+}
+
+.navItem:hover {
+  color: #f3f4f6;
+  background-color: #374151;
+}
+
+.navItem.active {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  box-shadow: 0 1px 3px 0 rgba(245, 158, 11, 0.3);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.navIcon {
+  height: 1rem;
+  width: 1rem;
+}
+
+.navBadge {
+  margin-left: auto;
+  font-size: 0.625rem;
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: none;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: #fbbf24;
+}
+
+/* Sidebar footer */
+.sidebarFooter {
+  padding: 1rem;
+  border-top: 1px solid #374151;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.userAvatar {
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  background-color: rgba(245, 158, 11, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fbbf24;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.userAvatarText {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #f3f4f6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userMenuButton {
+  padding: 0.375rem;
+  color: #9ca3af;
+  background: none;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.userMenuButton:hover {
+  color: #f3f4f6;
+  background-color: #374151;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  margin-left: 18rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+}
+
+/* Header */
+.header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem 0 2rem;
+  height: 4rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobileBrand {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobileLogo {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.5rem;
+  background-color: #f59e0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.mobileBrandText {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.pageTitle {
+  display: none;
+}
+
+.headerTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.headerSubtitle {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.notificationButton {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  color: #6b7280;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.notificationButton:hover {
+  color: #374151;
+  background-color: #f3f4f6;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: #ef4444;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.searchContainer {
+  display: none;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1rem;
+  width: 1rem;
+  color: #6b7280;
+}
+
+.searchInput {
+  padding-left: 2.25rem;
+  width: 16rem;
+  height: 2.25rem;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+}
+
+.settingsButton {
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: #6b7280;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settingsButton:hover {
+  color: #1f2937;
+  background-color: #f3f4f6;
+}
+
+.mobileNav {
+  display: none;
+  gap: 0.25rem;
+  padding: 0 1rem 0.75rem;
+  overflow-x: auto;
+}
+
+.mobileNavItem {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.mobileNavItem:hover {
+  color: #1f2937;
+}
+
+.mobileNavItemActive {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.userDropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.userDropdown:hover {
+  background-color: #f3f4f6;
+}
+
+.userDropdownAvatar {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.userDropdownInfo {
+  text-align: right;
+}
+
+.userDropdownName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.userDropdownRole {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.contentHeader {
+  margin-bottom: 2rem;
+}
+
+.contentTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.contentDescription {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Stats grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.statCard:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.statTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.statIcon {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.statIcon.blue {
+  background-color: #3b82f6;
+}
+
+.statIcon.green {
+  background-color: #10b981;
+}
+
+.statIcon.yellow {
+  background-color: #f59e0b;
+}
+
+.statIcon.red {
+  background-color: #ef4444;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.statChange {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.statChange.positive {
+  color: #10b981;
+}
+
+.statChange.negative {
+  color: #ef4444;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 16rem;
+  }
+
+  .main {
+    margin-left: 16rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .main {
+    margin-left: 0;
+  }
+  
+  .header {
+    padding: 1rem;
+  }
+  
+  .headerContainer {
+    padding: 0 1rem;
+  }
+  
+  .mobileBrand {
+    display: flex;
+  }
+  
+  .pageTitle {
+    display: block;
+  }
+  
+  .searchContainer {
+    display: flex;
+  }
+  
+  .mobileNav {
+    display: flex;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .userDropdownInfo {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 0.75rem;
+  }
+
+  .content {
+    padding: 0.75rem;
+  }
+
+  .contentTitle {
+    font-size: 1.5rem;
+  }
+
+  .statCard {
+    padding: 1rem;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+}

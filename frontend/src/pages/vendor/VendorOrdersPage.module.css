@@ -1,0 +1,589 @@
+/* VendorOrdersPage.module.css */
+
+/* Design Tokens */
+:root {
+  --gold-primary: #f59e0b;
+  --gold-light: #fbbf24;
+  --gold-dark: #d97706;
+  --luxury-black: #1f2937;
+  --luxury-dark: #374151;
+  --cream: #fef3c7;
+  --white: #ffffff;
+  --black: #000000;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header section */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.pageTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.pageSubtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.exportButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.exportButton:hover {
+  background-color: #f3f4f6;
+}
+
+.exportButton svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+/* Filters section */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1rem;
+  width: 1rem;
+  color: #6b7280;
+}
+
+.searchInput {
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #f59e0b;
+}
+
+.statusFilter {
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  font-size: 0.875rem;
+  color: #111827;
+  transition: all 0.2s ease;
+}
+
+.statusFilter:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #f59e0b;
+}
+
+/* Summary cards */
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.summaryCard {
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-left-width: 4px;
+  padding: 1rem;
+}
+
+.summaryPending {
+  border-left-color: #f59e0b;
+}
+
+.summaryProcessing {
+  border-left-color: #3b82f6;
+}
+
+.summaryShipped {
+  border-left-color: #f59e0b;
+}
+
+.summaryDelivered {
+  border-left-color: #10b981;
+}
+
+.summaryLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.summaryCount {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-top: 0.25rem;
+}
+
+/* Table section */
+.tableContainer {
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.ordersTable {
+  width: 100%;
+}
+
+.tableHead {
+  border-bottom: 1px solid #e5e7eb;
+  background-color: rgba(243, 244, 246, 0.5);
+}
+
+.tableHead th {
+  text-align: left;
+  padding: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tableBody tr {
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.tableBody tr:hover {
+  background-color: rgba(243, 244, 246, 0.3);
+}
+
+.tableBody tr:last-child {
+  border-bottom: none;
+}
+
+.tableCell {
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Order ID */
+.orderId {
+  font-family: monospace;
+  font-weight: 500;
+  color: #f59e0b;
+}
+
+/* Customer info */
+.customerName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.customerEmail {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Amount */
+.amount {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Payment status */
+.paymentPaid {
+  color: #15803d;
+}
+
+.paymentPending {
+  color: #d97706;
+}
+
+.paymentRefunded {
+  color: #dc2626;
+}
+
+/* Order status badges */
+.statusBadge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+}
+
+.statusDelivered {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.statusShipped {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.statusProcessing {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.statusPending {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.statusCancelled {
+  background-color: #fecaca;
+  color: #dc2626;
+}
+
+/* Status controls */
+.statusBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statusPending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.statusConfirmed {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.statusProcessing {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.statusShipped {
+  background-color: #f3e8ff;
+  color: #7c3aed;
+}
+
+.statusDelivered {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.statusCancelled {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.statusRefunded {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* Status controls container */
+.statusControls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 120px;
+}
+
+/* Status select dropdown */
+.statusSelect {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.statusSelect:hover {
+  border-color: #9ca3af;
+}
+
+.statusSelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.statusSelect:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Apply status colors to select */
+.statusSelect.statusPending {
+  background-color: #fef3c7;
+  color: #92400e;
+  border-color: #f59e0b;
+}
+
+.statusSelect.statusConfirmed {
+  background-color: #dbeafe;
+  color: #1e40af;
+  border-color: #3b82f6;
+}
+
+.statusSelect.statusProcessing {
+  background-color: #e0e7ff;
+  color: #3730a3;
+  border-color: #6366f1;
+}
+
+.statusSelect.statusShipped {
+  background-color: #f3e8ff;
+  color: #7c3aed;
+  border-color: #8b5cf6;
+}
+
+.statusSelect.statusDelivered {
+  background-color: #d1fae5;
+  color: #065f46;
+  border-color: #10b981;
+}
+
+.statusSelect.statusCancelled {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #ef4444;
+}
+
+.statusSelect.statusRefunded {
+  background-color: #f3f4f6;
+  color: #374151;
+  border-color: #6b7280;
+}
+
+/* Tracking number input */
+.trackingInput {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.trackingInput:hover {
+  border-color: #9ca3af;
+}
+
+.trackingInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.trackingInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Update button */
+.updateButton {
+  padding: 0.25rem 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #3b82f6;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.updateButton:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.updateButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.updateButton:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Responsive design */
+@media (min-width: 640px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .filters {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .summaryGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .pageTitle {
+    font-size: 1.25rem;
+  }
+
+  .exportButton {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .exportButton svg {
+    height: 0.875rem;
+    width: 0.875rem;
+  }
+
+  .searchInput,
+  .statusFilter {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .searchInput {
+    padding-left: 2rem;
+  }
+
+  .searchIcon {
+    left: 0.5rem;
+    height: 0.875rem;
+    width: 0.875rem;
+  }
+
+  .summaryCard {
+    padding: 0.75rem;
+  }
+
+  .summaryCount {
+    font-size: 1.125rem;
+  }
+
+  .tableHead th,
+  .tableCell {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .customerName {
+    font-size: 0.75rem;
+  }
+
+  .customerEmail {
+    font-size: 0.625rem;
+  }
+
+  .amount {
+    font-size: 0.75rem;
+  }
+
+  .statusBadge {
+    font-size: 0.625rem;
+    padding: 0.1875rem 0.5rem;
+  }
+}
+
+/* Hidden utility classes */
+.hiddenSm {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hiddenSm {
+    display: table-cell;
+  }
+}
+
+.hiddenMd {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hiddenMd {
+    display: table-cell;
+  }
+}
+
+.hiddenLg {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hiddenLg {
+    display: table-cell;
+  }
+}

@@ -1,0 +1,239 @@
+/* ProductsPage.module.css */
+
+/* Design Tokens */
+:root {
+  --gold-primary: #f59e0b;
+  --gold-light: #fbbf24;
+  --gold-dark: #d97706;
+  --luxury-black: #1f2937;
+  --luxury-dark: #374151;
+  --cream: #fef3c7;
+  --white: #ffffff;
+  --black: #000000;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Main container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Page title */
+.pageTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+/* Search and filters section */
+.searchFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1rem;
+  width: 1rem;
+  color: #6b7280;
+}
+
+.searchInput {
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  color: #111827;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+/* Category filters */
+.categoryFilters {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.categoryButton {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.categoryButton.active {
+  background-color: #f59e0b;
+  color: #ffffff;
+}
+
+.categoryButton.inactive {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.categoryButton.inactive:hover {
+  background-color: #e5e7eb;
+}
+
+/* Products grid */
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* No products message */
+.noProducts {
+  text-align: center;
+  color: #6b7280;
+  padding: 5rem 0;
+}
+
+/* Floating compare button */
+.floatingCompareButton {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background-color: #f59e0b;
+  color: #ffffff;
+  font-weight: 500;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.floatingCompareButton:hover {
+  background-color: #d97706;
+  transform: translateY(-2px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.floatingCompareButton svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (min-width: 640px) {
+  .searchFilters {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .productsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .container {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .productsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .container {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .productsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  
+  .container {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    padding: 2rem 0.75rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+  
+  .searchInput {
+    font-size: 0.875rem;
+  }
+  
+  .categoryButton {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .floatingCompareButton {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .floatingCompareButton svg {
+    height: 1rem;
+    width: 1rem;
+  }
+}

@@ -1,0 +1,374 @@
+/* InventoryPage.module.css */
+
+/* Design Tokens */
+:root {
+  --gold-primary: #f59e0b;
+  --gold-light: #fbbf24;
+  --gold-dark: #d97706;
+  --luxury-black: #1f2937;
+  --luxury-dark: #374151;
+  --cream: #fef3c7;
+  --white: #ffffff;
+  --black: #000000;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header section */
+.header {
+  margin-bottom: 0.5rem;
+}
+
+.pageTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.pageSubtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* Summary cards grid */
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.summaryCard {
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.25rem;
+}
+
+.summaryContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.summaryIcon {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summaryIconPrimary {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.summaryIconBlue {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.summaryIconRed {
+  background-color: #fecaca;
+  color: #dc2626;
+}
+
+.summaryIcon svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.summaryInfo {
+  flex: 1;
+}
+
+.summaryValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.summaryValueDanger {
+  color: #dc2626;
+}
+
+.summaryLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Search section */
+.searchContainer {
+  position: relative;
+  max-width: 28rem;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1rem;
+  width: 1rem;
+  color: #6b7280;
+}
+
+.searchInput {
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #f59e0b;
+}
+
+/* Inventory grid */
+.inventoryGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.inventoryCard {
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.inventoryCard:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.inventoryCardLowStock {
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+.inventoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.productImage {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.productInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.productName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productMeta {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Stock section */
+.stockSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.stockLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.stockValue {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stockWarning {
+  height: 0.875rem;
+  width: 0.875rem;
+  color: #dc2626;
+}
+
+.stockAmount {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.stockAmountLow {
+  color: #dc2626;
+}
+
+/* Progress bar */
+.progressContainer {
+  margin-top: 0.5rem;
+}
+
+.progressBar {
+  height: 0.375rem;
+  border-radius: 9999px;
+  background-color: #f3f4f6;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 9999px;
+  background-color: #f59e0b;
+}
+
+.progressFillLow {
+  background-color: #dc2626;
+}
+
+/* Update button */
+.updateButton {
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #111827;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.updateButton:hover {
+  background-color: #f3f4f6;
+}
+
+/* Responsive design */
+@media (min-width: 640px) {
+  .summaryGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .inventoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .inventoryGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .pageTitle {
+    font-size: 1.25rem;
+  }
+  
+  .pageSubtitle {
+    font-size: 0.75rem;
+  }
+  
+  .summaryCard {
+    padding: 1rem;
+  }
+  
+  .summaryIcon {
+    height: 2rem;
+    width: 2rem;
+  }
+  
+  .summaryIcon svg {
+    height: 1rem;
+    width: 1rem;
+  }
+  
+  .summaryValue {
+    font-size: 1.25rem;
+  }
+  
+  .searchInput {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .searchInput {
+    padding-left: 2rem;
+  }
+  
+  .searchIcon {
+    left: 0.5rem;
+    height: 0.875rem;
+    width: 0.875rem;
+  }
+  
+  .inventoryCard {
+    padding: 0.75rem;
+  }
+  
+  .productImage {
+    height: 3rem;
+    width: 3rem;
+  }
+  
+  .productName {
+    font-size: 0.75rem;
+  }
+  
+  .productMeta {
+    font-size: 0.625rem;
+  }
+  
+  .stockAmount {
+    font-size: 0.75rem;
+  }
+  
+  .stockWarning {
+    height: 0.75rem;
+    width: 0.75rem;
+  }
+  
+  .updateButton {
+    font-size: 0.625rem;
+    padding: 0.375rem;
+  }
+}

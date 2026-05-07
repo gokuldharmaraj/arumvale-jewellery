@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    --primary: 43 74% 49%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 20% 95%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 40 15% 95%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 43 74% 49%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 90%;
+    --input: 40 20% 90%;
+    --ring: 43 74% 49%;
+
+    --radius: 0.75rem;
+
+    --gold: 43 74% 49%;
+    --gold-light: 43 60% 70%;
+    --gold-dark: 43 80% 35%;
+    --luxury-black: 0 0% 8%;
+    --luxury-dark: 0 0% 12%;
+    --cream: 40 33% 97%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 40 33% 97%;
+    --sidebar-primary: 43 74% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 43 74% 49%;
+    --sidebar-accent-foreground: 40 33% 97%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 43 74% 49%;
+
+    --font-display: "Playfair Display", serif;
+    --font-body: "Inter", sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 60% 70%));
+  }
+  .gold-text {
+    background: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 60% 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .luxury-dark-bg {
+    background-color: hsl(var(--luxury-black));
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  .gold-border {
+    border-color: hsl(var(--gold));
+  }
+}

@@ -1,0 +1,350 @@
+/* ComparePage.module.css */
+
+/* Design Tokens */
+:root {
+  --gold-primary: #f59e0b;
+  --gold-light: #fbbf24;
+  --gold-dark: #d97706;
+  --luxury-black: #1f2937;
+  --luxury-dark: #374151;
+  --cream: #fef3c7;
+  --white: #ffffff;
+  --black: #000000;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Main container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Empty state */
+.emptyState {
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.emptyStateTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.emptyStateDescription {
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.emptyStateLink {
+  color: #f59e0b;
+  text-decoration: none;
+}
+
+.emptyStateLink:hover {
+  text-decoration: underline;
+}
+
+/* Header section */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.headerTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.headerSubtitle {
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.clearButton {
+  font-size: 0.875rem;
+  color: #dc2626;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: text-decoration 0.2s ease;
+}
+
+.clearButton:hover {
+  text-decoration: underline;
+}
+
+/* Recommendations grid */
+.recommendationsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.recommendationCard {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.recommendationIcon {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background-color: rgba(245, 158, 11, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f59e0b;
+}
+
+.recommendationIcon svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.recommendationContent {
+  flex: 1;
+}
+
+.recommendationLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.recommendationName {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: #111827;
+}
+
+.recommendationScore {
+  font-size: 0.75rem;
+  color: #f59e0b;
+}
+
+/* Comparison table */
+.tableContainer {
+  overflow-x: auto;
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader th {
+  text-align: left;
+  padding: 1rem;
+  background-color: #f3f4f6;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  width: 10rem;
+}
+
+.tableHeader th:first-child {
+  border-top-left-radius: 0.75rem;
+}
+
+.tableHeader th:last-child {
+  border-top-right-radius: 0.75rem;
+}
+
+.productHeader {
+  padding: 1rem;
+  background-color: #f3f4f6;
+  text-align: center;
+}
+
+.productHeader.bestPick {
+  box-shadow: inset 0 0 0 2px #f59e0b;
+}
+
+.productHeaderContent {
+  position: relative;
+}
+
+.removeButton {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  background-color: #dc2626;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border: none;
+  cursor: pointer;
+}
+
+.removeButton svg {
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.productImage {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  margin: 0 auto 0.5rem;
+}
+
+.productName {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #111827;
+}
+
+.bestPickBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  background-color: #f59e0b;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.bestPickBadge svg {
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+/* Table body */
+.tableBody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.tableBody tr:nth-child(odd) {
+  background-color: rgba(243, 244, 246, 0.5);
+}
+
+.featureCell {
+  padding: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.valueCell {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #111827;
+}
+
+.valueCell.bestPick {
+  box-shadow: inset 0 0 0 2px #f59e0b;
+}
+
+.valueCell.bestValue {
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.valueStar {
+  margin-left: 0.25rem;
+  font-size: 0.75rem;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .recommendationsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .container {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    padding: 2rem 0.75rem;
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .headerTitle {
+    font-size: 1.5rem;
+  }
+  
+  .recommendationCard {
+    padding: 0.75rem;
+  }
+  
+  .recommendationIcon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  
+  .recommendationIcon svg {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+  
+  .productImage {
+    height: 3rem;
+    width: 3rem;
+  }
+  
+  .productName {
+    font-size: 0.75rem;
+  }
+  
+  .tableHeader th,
+  .featureCell,
+  .valueCell {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .emptyState {
+    padding: 4rem 0;
+  }
+  
+  .emptyStateTitle {
+    font-size: 1.5rem;
+  }
+}
