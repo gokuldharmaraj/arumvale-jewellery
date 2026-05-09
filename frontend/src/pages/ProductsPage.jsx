@@ -5,6 +5,7 @@ import axios from "axios";
 import ProductCard from "@/components/ProductCard";
 import { useCompare } from "@/context/CompareContext";
 import styles from "./ProductsPage.module.css";
+import API_BASE_URL from "../lib/api";
 
 const categories = ["All", "Necklace", "Ring", "Bangle", "Earrings", "Pendant", "Anklet", "Chain", "Bracelet", "24K", "22K", "18K", "14K", "925 Silver", "Platinum"];
 
@@ -35,7 +36,7 @@ export default function ProductsPage() {
       if (activeCategory !== "All") params.append('category', activeCategory);
 
       const response = await axios.get(
-        `http://localhost:5000/api/products?${params}`,
+        `${API_BASE_URL}/api/products?${params}`,
         {
           withCredentials: true
         }

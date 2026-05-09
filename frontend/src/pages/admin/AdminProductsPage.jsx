@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import axios from "axios";
+import API_BASE_URL from "../../lib/api";
 import styles from "./AdminProductsPage.module.css";
 
 export default function AdminProductsPage() {
@@ -27,14 +28,14 @@ export default function AdminProductsPage() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/admin/products", {
+        const response = await axios.get(`${API_BASE_URL}/api/admin/products`, {
           withCredentials: true
         });
         const productList = response.data.products || [];
         setProducts(productList);
         
         // Fetch stats from admin endpoint
-        const statsResponse = await axios.get("http://localhost:5000/api/admin/products/stats", {
+        const statsResponse = await axios.get(`${API_BASE_URL}/api/admin/products/stats`, {
           withCredentials: true
         });
         const statsData = statsResponse.data;
@@ -67,7 +68,7 @@ export default function AdminProductsPage() {
   const handleViewProduct = async (product) => {
     try {
       setActionLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/admin/products/${product._id}`, {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/products/${product._id}`, {
         withCredentials: true
       });
       setSelectedProduct(response.data);
@@ -83,7 +84,7 @@ export default function AdminProductsPage() {
     try {
       setActionLoading(true);
       const newStatus = product.status === "active" ? "draft" : "active";
-      await axios.put(`http://localhost:5000/api/admin/products/${product._id}/toggle-status`, 
+      await axios.put(`${API_BASE_URL}/api/admin/products/${product._id}/toggle-status`, 
         { status: newStatus },
         { withCredentials: true }
       );
@@ -94,7 +95,7 @@ export default function AdminProductsPage() {
       ));
       
       // Refresh stats
-      const statsResponse = await axios.get("http://localhost:5000/api/admin/products/stats", {
+      const statsResponse = await axios.get(`${API_BASE_URL}/api/admin/products/stats`, {
         withCredentials: true
       });
       const statsData = statsResponse.data;
@@ -201,7 +202,7 @@ export default function AdminProductsPage() {
                       <div className={styles.productCell}>
                         <div className={p.status === "draft" ? styles.blockedProductOverlay : ""}>
                           <img 
-                            src={p.images?.[0] ? `http://localhost:5000${p.images[0]}` : "/placeholder.svg"} 
+                            src={p.images?.[0] ? `${API_BASE_URL}${p.images[0]}` : "/placeholder.svg"} 
                             alt={p.name} 
                             className={`${styles.productImage} ${p.status === "draft" ? styles.blockedProductImage : ""}`}
                             onError={(e) => {
@@ -283,7 +284,7 @@ export default function AdminProductsPage() {
                 {selectedProduct.images?.map((image, index) => (
                   <img 
                     key={index}
-                    src={`http://localhost:5000${image}`}
+                    src={`${API_BASE_URL}${image}`}
                     alt={`${selectedProduct.name} ${index + 1}`}
                     className={styles.modalImage}
                     onError={(e) => {

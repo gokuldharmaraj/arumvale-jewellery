@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
+import API_BASE_URL from "../lib/api";
+
 
 const quickLinks = [{
   icon: Package,
@@ -37,7 +39,7 @@ export default function ProfilePage() {
       if (user) {
         setLoadingOrders(true);
         try {
-          const response = await axios.get("http://localhost:5000/api/orders/my", {
+          const response = await axios.get(`${API_BASE_URL}/api/orders/my`, {
             withCredentials: true
           });
           setRecentOrders(response.data.orders?.slice(0, 3) || []);

@@ -40,7 +40,8 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     const {
-      error
+      error,
+      user
     } = await login(email, password);
     if (error) {
       toast({
@@ -51,11 +52,24 @@ export default function LoginPage() {
       setLoading(false);
       return;
     }
+
+    // Validate that selected role matches user's actual role
+    if (selectedRole !== user.role) {
+      toast({
+        title: "Role Mismatch",
+        description: "Please select the correct role for this account",
+        variant: "destructive"
+      });
+      setLoading(false);
+      return;
+    }
+
     toast({
       title: "Login Successful",
       description: `Welcome back!`
     });
-    if (selectedRole === "admin") navigate("/admin");else if (selectedRole === "vendor") navigate("/vendor");else navigate("/");
+    // Redirect based on authenticated user role
+    if (user.role === "admin") navigate("/admin");else if (user.role === "vendor") navigate("/vendor");else navigate("/");
     setLoading(false);
   };
   return <div className={styles.loginPage} style={{

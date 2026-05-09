@@ -4,6 +4,7 @@ import { useAuth } from "@/context/AuthContext";
 import { getImageUrl } from "@/utils/getImageUrl";
 import axios from "axios";
 import LoginPrompt from "@/components/LoginPrompt";
+import API_BASE_URL from "../lib/api";
 
 export default function OrdersPage() {
   const { isLoggedIn } = useAuth();
@@ -14,7 +15,7 @@ export default function OrdersPage() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/orders/my", {
+        const response = await axios.get(`${API_BASE_URL}/api/orders/my`, {
           withCredentials: true,
         });
         setOrders(response.data.orders || []);

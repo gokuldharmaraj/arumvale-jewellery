@@ -21,6 +21,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Loader2, Calendar, DollarSign, FileText, Store, Clock } from "lucide-react";
+import API_BASE_URL from "../lib/api";
+
 
 export default function EstimateModal({ request, isOpen, onClose, onSuccess }) {
   const { toast } = useToast();
@@ -45,7 +47,7 @@ export default function EstimateModal({ request, isOpen, onClose, onSuccess }) {
     setLoading(true);
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/custom-requests/${request._id}/respond`,
+        `${API_BASE_URL}/api/custom-requests/${request._id}/respond`,
         {
           decision: pendingDecision,
           notes: notes.trim() || undefined,

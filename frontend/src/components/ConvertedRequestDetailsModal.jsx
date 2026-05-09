@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Calendar, Package, User, Image as ImageIcon } from "lucide-react";
 import styles from "./ConvertedRequestDetailsModal.module.css";
+import API_BASE_URL from "../lib/api";
+
 
 export default function ConvertedRequestDetailsModal({ request, isOpen, onClose }) {
   const [loading, setLoading] = useState(false);
@@ -55,7 +57,7 @@ export default function ConvertedRequestDetailsModal({ request, isOpen, onClose 
             <div className={styles.designImageContainer}>
               {request.designImage ? (
                 <img 
-                  src={`http://localhost:5000${request.designImage}`} 
+                  src={`${API_BASE_URL}${request.designImage}`} 
                   alt="Original customer design" 
                   className={styles.designImage}
                 />

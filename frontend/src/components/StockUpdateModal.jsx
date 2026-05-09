@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Loader2, Package } from "lucide-react";
+import API_BASE_URL from "../lib/api";
 
 export default function StockUpdateModal({ 
   productId, 
@@ -87,7 +88,7 @@ export default function StockUpdateModal({
     try {
       // Update product stock using dedicated stock endpoint
       const response = await axios.patch(
-        `http://localhost:5000/api/products/${productId}/stock`,
+        `${API_BASE_URL}/api/products/${productId}/stock`,
         { stock: parseInt(newStock) },
         { withCredentials: true }
       );

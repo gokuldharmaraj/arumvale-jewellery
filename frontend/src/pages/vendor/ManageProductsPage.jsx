@@ -6,9 +6,8 @@ import { getImageUrl } from "@/utils/getImageUrl";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
 import styles from "./ManageProductsPage.module.css";
+import API_BASE_URL from "../../lib/api";
 
-// API base URL - following existing project pattern
-const API_BASE_URL = "http://localhost:5000/api";
 const getStatusClass = (status) => {
   switch(status) {
     case "Active":
@@ -38,7 +37,7 @@ export default function ManageProductsPage() {
       if (categoryFilter !== "All Categories") params.append('category', categoryFilter);
 
       const response = await axios.get(
-        `${API_BASE_URL}/products/my?${params}`,
+        `${API_BASE_URL}/api/products/my?${params}`,
         { withCredentials: true }
       );
       setProducts(response.data.products || []);
@@ -63,7 +62,7 @@ export default function ManageProductsPage() {
 
     try {
       await axios.delete(
-        `${API_BASE_URL}/products/${productId}`,
+        `${API_BASE_URL}/api/products/${productId}`,
         { withCredentials: true }
       );
       

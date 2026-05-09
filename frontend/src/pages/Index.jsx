@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import MetalPrices from "../components/MetalPrices";
 import axios from "axios";
+import API_BASE_URL from "../lib/api";
 
 const trustPoints = [{
   icon: Shield,
@@ -54,7 +55,7 @@ export default function Index() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/products?status=active");
+        const response = await axios.get(`${API_BASE_URL}/api/products?status=active`);
         setProducts(response.data.products || []);
       } catch (error) {
         console.error("Error fetching products:", error);

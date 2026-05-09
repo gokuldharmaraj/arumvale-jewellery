@@ -8,6 +8,8 @@ import { useToast } from "@/hooks/use-toast";
 import { getImageUrl } from "@/utils/getImageUrl";
 import axios from "axios";
 import styles from "./ProductDetailPage.module.css";
+import API_BASE_URL from "../lib/api";
+
 export default function ProductDetailPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -33,7 +35,7 @@ export default function ProductDetailPage() {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/products/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/api/products/${id}`, {
           withCredentials: true
         });
         setProduct(response.data);
@@ -49,7 +51,7 @@ export default function ProductDetailPage() {
 
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/reviews/product/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/api/reviews/product/${id}`, {
           withCredentials: true
         });
         setReviews(response.data.reviews || []);
@@ -62,7 +64,7 @@ export default function ProductDetailPage() {
     const fetchUserOrders = async () => {
       if (user) {
         try {
-          const response = await axios.get("http://localhost:5000/api/orders/my", {
+          const response = await axios.get(`${API_BASE_URL}/api/orders/my`, {
             withCredentials: true
           });
           setUserOrders(response.data.orders || []);
@@ -147,7 +149,7 @@ export default function ProductDetailPage() {
     setSubmittingReview(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/reviews",
+        `${API_BASE_URL}/api/reviews`,
         {
           productId: id,
           orderId: deliveredOrder._id,
@@ -167,7 +169,7 @@ export default function ProductDetailPage() {
       setReviewForm({ rating: 5, title: '', content: '' });
       
       // Refresh reviews
-      const reviewsResponse = await axios.get(`http://localhost:5000/api/reviews/product/${id}`, {
+      const reviewsResponse = await axios.get(`${API_BASE_URL}/api/reviews/product/${id}`, {
         withCredentials: true
       });
       setReviews(reviewsResponse.data.reviews || []);

@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 import styles from "./ManageVendorsPage.module.css";
+import API_BASE_URL from "../../lib/api";
 
 const getStatusConfig = (status) => {
   switch(status) {
@@ -51,7 +52,7 @@ export default function ManageVendorsPage() {
 
   const fetchVendors = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/vendors", {
+      const response = await axios.get(`${API_BASE_URL}/api/vendors`, {
         withCredentials: true
       });
       setVendors(response.data);
@@ -68,7 +69,7 @@ export default function ManageVendorsPage() {
 
   const handleApproveVendor = async (vendorId) => {
     try {
-      await axios.put(`http://localhost:5000/api/vendors/${vendorId}/approve`, {
+      await axios.put(`${API_BASE_URL}/api/vendors/${vendorId}/approve`, {
         approved: true
       }, {
         withCredentials: true
@@ -91,7 +92,7 @@ export default function ManageVendorsPage() {
 
   const handleRejectVendor = async (vendorId) => {
     try {
-      await axios.put(`http://localhost:5000/api/vendors/${vendorId}/approve`, {
+      await axios.put(`${API_BASE_URL}/api/vendors/${vendorId}/approve`, {
         approved: false,
         rejectionReason: "Application rejected by admin"
       }, {
@@ -115,7 +116,7 @@ export default function ManageVendorsPage() {
 
   const handleToggleVendorStatus = async (vendorId, isActive) => {
     try {
-      await axios.put(`http://localhost:5000/api/vendors/${vendorId}/toggle-status`, {
+      await axios.put(`${API_BASE_URL}/api/vendors/${vendorId}/toggle-status`, {
         isActive,
         suspensionReason: isActive ? null : "Suspended by admin"
       }, {

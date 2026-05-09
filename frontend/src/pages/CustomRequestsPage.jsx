@@ -5,11 +5,11 @@ import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 import { Plus, Loader2, FileText, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CustomRequestCard from "@/components/CustomRequestCard";
 import EstimateModal from "@/components/EstimateModal";
 import RequestDetailsModal from "@/components/RequestDetailsModal";
 import LoginPrompt from "@/components/LoginPrompt";
+import API_BASE_URL from "../lib/api";
 
 export default function CustomRequestsPage() {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ export default function CustomRequestsPage() {
       setError(null);
       
       const response = await axios.get(
-        "http://localhost:5000/api/custom-requests/my",
+        `${API_BASE_URL}/api/custom-requests/my`,
         { withCredentials: true }
       );
       

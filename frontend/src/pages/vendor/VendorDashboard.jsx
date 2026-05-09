@@ -6,6 +6,8 @@ import { useAuth } from "@/context/AuthContext";
 import { getImageUrl } from "@/utils/getImageUrl";
 import axios from "axios";
 import styles from "./VendorDashboard.module.css";
+import API_BASE_URL from "../../lib/api";
+
 const getStatusClass = (status) => {
   switch(status) {
     case "Delivered":
@@ -42,7 +44,7 @@ export default function VendorDashboard() {
       
       // Fetch vendor's products
       const productsResponse = await axios.get(
-        'http://localhost:5000/api/products/my?limit=100',
+        `${API_BASE_URL}/api/products/my?limit=100`,
         { withCredentials: true }
       );
       
@@ -70,7 +72,7 @@ export default function VendorDashboard() {
       // Fetch recent orders
       try {
         const ordersResponse = await axios.get(
-          'http://localhost:5000/api/orders/vendor/my?limit=5',
+          `${API_BASE_URL}/api/orders/vendor/my?limit=5`,
           { withCredentials: true }
         );
         const recentOrdersData = (ordersResponse.data.orders || []).slice(0, 5);

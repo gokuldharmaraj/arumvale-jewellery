@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { LayoutDashboard, Users, Store, Package, ShoppingBag, FileText, ChevronLeft, Bell, Search, LogOut, Shield } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import API_BASE_URL from "../lib/api";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
@@ -46,12 +47,12 @@ export default function AdminLayout() {
     const fetchNotifications = async () => {
       try {
         // Fetch pending vendors
-        const vendorsResponse = await axios.get("http://localhost:5000/api/vendors", { withCredentials: true });
+        const vendorsResponse = await axios.get(`${API_BASE_URL}/api/vendors`, { withCredentials: true });
         const pendingVendors = vendorsResponse.data.filter(v => v.status === 'Pending').length;
         
         // Fetch pending orders
-        const ordersResponse = await axios.get("http://localhost:5000/api/orders", { withCredentials: true });
-        const pendingOrders = ordersResponse.data.filter(o => o.status === 'pending').length;
+        const ordersResponse = await axios.get(`${API_BASE_URL}/api/orders`, { withCredentials: true });
+        const pendingOrders = ordersResponse.data.orders?.filter(o => o.status === 'pending').length || 0;
         
         const notificationData = [];
         if (pendingVendors > 0) {

@@ -2,6 +2,7 @@ import styles from "./MetalPrices.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Coins, CircleDollarSign, Medal, Gem } from "lucide-react";
+import API_BASE_URL from "../lib/api";
 
 function MetalPrices() {
   const [prices, setPrices] = useState({});
@@ -9,7 +10,7 @@ function MetalPrices() {
   useEffect(() => {
     const fetchPrices = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/metals");
+        const res = await axios.get(`${API_BASE_URL}/api/metals`);
 
         setPrices(res.data);
       } catch (err) {

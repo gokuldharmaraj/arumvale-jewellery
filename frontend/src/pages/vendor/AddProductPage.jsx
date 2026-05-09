@@ -5,9 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 import styles from "./AddProductPage.module.css";
-
-// API base URL - following existing project pattern
-const API_BASE_URL = "http://localhost:5000/api";
+import API_BASE_URL from "../../lib/api";
 
 const categories = ["Necklace", "Ring", "Bangle", "Earrings", "Pendant", "Anklet", "Chain", "Bracelet"];
 const purities = ["24K", "22K", "18K", "14K", "925 Silver", "Platinum"];
@@ -55,7 +53,7 @@ export default function AddProductPage() {
     try {
       setFetchLoading(true);
       const response = await axios.get(
-        `${API_BASE_URL}/products/${id}`,
+        `${API_BASE_URL}/api/products/${id}`,
         { withCredentials: true }
       );
       
@@ -222,7 +220,7 @@ export default function AddProductPage() {
       console.log("========================");
 
       const response = await axios[isEditMode ? 'put' : 'post'](
-        isEditMode ? `${API_BASE_URL}/products/${id}` : `${API_BASE_URL}/products`,
+        isEditMode ? `${API_BASE_URL}/api/products/${id}` : `${API_BASE_URL}/api/products`,
         formDataToSend,
         {
           withCredentials: true,

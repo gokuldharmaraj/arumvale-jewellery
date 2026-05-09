@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import API_BASE_URL from "../lib/api";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
@@ -95,7 +96,7 @@ export default function EstimateSubmissionModal({
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/custom-requests/${request._id}/estimate`,
+        `${API_BASE_URL}/api/custom-requests/${request._id}/estimate`,
         {
           price: parseFloat(formData.price),
           timeline: formData.timeline.trim(),
@@ -145,7 +146,7 @@ export default function EstimateSubmissionModal({
 
   // Design image URL
   const designImageUrl = request.designImage 
-    ? `http://localhost:5000${request.designImage}`
+    ? `${API_BASE_URL}${request.designImage}`
     : "/placeholder.svg";
 
   return (

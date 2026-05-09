@@ -5,6 +5,7 @@ import { Loader2, Package, AlertCircle } from "lucide-react";
 import ApprovedCustomRequestCard from "@/components/ApprovedCustomRequestCard";
 import ConvertToProductModal from "@/components/ConvertToProductModal";
 import styles from "./ApprovedCustomRequestsPage.module.css";
+import API_BASE_URL from "../../lib/api";
 
 export default function ApprovedCustomRequestsPage() {
   const { toast } = useToast();
@@ -13,6 +14,7 @@ export default function ApprovedCustomRequestsPage() {
   const [error, setError] = useState(null);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
 
   // Fetch approved custom requests
   const fetchRequests = async () => {
@@ -21,7 +23,7 @@ export default function ApprovedCustomRequestsPage() {
       setError(null);
       
       const response = await axios.get(
-        "http://localhost:5000/api/custom-requests/vendor?status=approved",
+        `${API_BASE_URL}/api/custom-requests/vendor?status=approved`,
         { withCredentials: true }
       );
       

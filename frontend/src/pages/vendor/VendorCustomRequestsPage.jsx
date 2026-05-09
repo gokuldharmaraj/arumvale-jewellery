@@ -7,6 +7,7 @@ import ConvertedRequestCard from "@/components/ConvertedRequestCard";
 import EstimateSubmissionModal from "@/components/EstimateSubmissionModal";
 import ConvertedRequestDetailsModal from "@/components/ConvertedRequestDetailsModal";
 import styles from "./VendorCustomRequestsPage.module.css";
+import API_BASE_URL from "../../lib/api";
 
 export default function VendorCustomRequestsPage() {
   const { toast } = useToast();
@@ -28,7 +29,7 @@ export default function VendorCustomRequestsPage() {
       setError(null);
       
       const response = await axios.get(
-        "http://localhost:5000/api/custom-requests/vendor?status=pending,under_review,estimated",
+        `${API_BASE_URL}/api/custom-requests/vendor?status=pending,under_review,estimated`,
         { withCredentials: true }
       );
       
@@ -48,7 +49,7 @@ export default function VendorCustomRequestsPage() {
       setError(null);
       
       const response = await axios.get(
-        "http://localhost:5000/api/custom-requests/vendor?status=converted",
+        `${API_BASE_URL}/api/custom-requests/vendor?status=converted`,
         { withCredentials: true }
       );
       

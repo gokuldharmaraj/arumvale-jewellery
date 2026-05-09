@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import axios from "axios";
+import API_BASE_URL from "../lib/api";
 
 export const AuthContext = createContext();
 
@@ -12,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/me",
+          `${API_BASE_URL}/api/auth/me`,
           { withCredentials: true }
         );
         setUser(res.data);
@@ -30,13 +31,13 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${API_BASE_URL}/api/auth/login`,
         { email, password },
         { withCredentials: true }
       );
 
       setUser(res.data);
-      return { success: true };
+      return { success: true, user: res.data };
     } catch (err) {
       return {
         error: err.response?.data?.message || "Login failed",
@@ -48,7 +49,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (formData) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${API_BASE_URL}/api/auth/register`,
         formData,
         { withCredentials: true }
       );
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        `${API_BASE_URL}/api/auth/logout`,
         {},
         { withCredentials: true }
       );

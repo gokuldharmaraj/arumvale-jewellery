@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 import styles from "./ManageUsersPage.module.css";
+import API_BASE_URL from "../../lib/api";
 
 const getStatusClass = (status) => {
   switch(status) {
@@ -45,7 +46,7 @@ export default function ManageUsersPage() {
 
   const fetchUserStats = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/users/stats", {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/users/stats`, {
         withCredentials: true
       });
       setStats(response.data);
@@ -61,7 +62,7 @@ export default function ManageUsersPage() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/api/admin/users", {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/users`, {
         withCredentials: true
       });
       setUsers(response.data.users || []);
@@ -78,7 +79,7 @@ export default function ManageUsersPage() {
 
   const handleViewUser = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/admin/users/${userId}`, {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/users/${userId}`, {
         withCredentials: true
       });
       setSelectedUser(response.data);
@@ -94,7 +95,7 @@ export default function ManageUsersPage() {
 
   const handleToggleUserStatus = async (userId, isActive) => {
     try {
-      await axios.put(`http://localhost:5000/api/admin/users/${userId}/toggle-status`, {
+      await axios.put(`${API_BASE_URL}/api/admin/users/${userId}/toggle-status`, {
         isActive
       }, {
         withCredentials: true

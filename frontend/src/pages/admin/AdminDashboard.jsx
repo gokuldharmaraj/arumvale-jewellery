@@ -284,8 +284,8 @@ export default function AdminDashboard() {
                 </tr>
               </thead>
               <tbody>
-                {recentOrders.map(order => <tr key={order._id} className="border-b border-border/50 last:border-0 hover:bg-muted/30 transition-colors">
-                    <td className="py-3 text-sm font-medium text-primary">{order._id}</td>
+                {recentOrders.map(order => <tr key={order.id} className="border-b border-border/50 last:border-0 hover:bg-muted/30 transition-colors">
+                    <td className="py-3 text-sm font-medium text-primary">{order.id}</td>
                     <td className="py-3 text-sm text-foreground">{order.customer}</td>
                     <td className="py-3 text-sm font-medium text-foreground hidden sm:table-cell">{order.amount}</td>
                     <td className="py-3">

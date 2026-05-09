@@ -7,6 +7,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import API_BASE_URL from "../lib/api";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
@@ -150,7 +152,7 @@ export default function ConvertToProductModal({
     try {
       // Send form data to backend
       const response = await axios.post(
-        `http://localhost:5000/api/custom-requests/${request._id}/convert`,
+        `${API_BASE_URL}api/custom-requests/${request._id}/convert`,
         {
           productName: formData.productName,
           productDescription: formData.productDescription,
@@ -196,7 +198,7 @@ export default function ConvertToProductModal({
 
   // Design image URL
   const designImageUrl = request?.designImage 
-    ? `http://localhost:5000${request.designImage}`
+    ? `${API_BASE_URL}${request.designImage}`
     : "/placeholder.svg";
 
   // Estimate price

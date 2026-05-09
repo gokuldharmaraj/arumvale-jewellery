@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import API_BASE_URL from "../lib/api";
 
 export default function CustomRequestPage() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function CustomRequestPage() {
       try {
         setVendorsLoading(true);
         const response = await axios.get(
-          "http://localhost:5000/api/vendors/approved",
+          `${API_BASE_URL}/api/vendors/approved`,
           { withCredentials: true }
         );
         
@@ -175,7 +176,7 @@ export default function CustomRequestPage() {
       });
 
       const response = await axios.post(
-        "http://localhost:5000/api/custom-requests",
+        `${API_BASE_URL}/api/custom-requests`,
         formDataToSend,
         {
           withCredentials: true,

@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, Send, Eye, FileText } from "lucide-react";
+import API_BASE_URL from "../lib/api";
 
 const getStatusConfig = (status) => {
   switch(status) {
@@ -69,7 +70,7 @@ export default function VendorCustomRequestCard({ request, onSubmitEstimate, onV
 
   // Design image URL
   const designImageUrl = request.designImage 
-    ? `http://localhost:5000${request.designImage}`
+    ? `${API_BASE_URL}${request.designImage}`
     : "/placeholder.svg";
 
   return (

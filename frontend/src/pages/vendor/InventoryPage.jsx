@@ -5,6 +5,7 @@ import { useAuth } from "@/context/AuthContext";
 import { getImageUrl } from "@/utils/getImageUrl";
 import StockUpdateModal from "@/components/StockUpdateModal";
 import styles from "./InventoryPage.module.css";
+import API_BASE_URL from "../../lib/api";
 
 export default function InventoryPage() {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,7 @@ export default function InventoryPage() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/products/my", {
+        const response = await axios.get(`${API_BASE_URL}/api/products/my`, {
           withCredentials: true
         });
         setProducts(response.data.products || []);
@@ -50,7 +51,7 @@ export default function InventoryPage() {
     // Refetch products to get updated data
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/products/my", {
+        const response = await axios.get(`${API_BASE_URL}/api/products/my`, {
           withCredentials: true
         });
         setProducts(response.data.products || []);

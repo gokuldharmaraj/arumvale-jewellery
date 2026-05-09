@@ -12,6 +12,8 @@ import {
   Image as ImageIcon 
 } from "lucide-react";
 import styles from "./ConvertedRequestCard.module.css";
+import API_BASE_URL from "../lib/api";
+
 
 export default function ConvertedRequestCard({ request, onOpenDetailsModal, setIsDetailsModalOpen }) {
   const { toast } = useToast();
@@ -38,12 +40,12 @@ export default function ConvertedRequestCard({ request, onOpenDetailsModal, setI
 
   // Get product image (first image or placeholder)
   const productImage = request.convertedProduct?.images?.[0] 
-    ? `http://localhost:5000${request.convertedProduct.images[0]}`
+    ? `${API_BASE_URL}${request.convertedProduct.images[0]}`
     : null;
 
   // Get design image (original customer reference)
   const designImage = request.designImage 
-    ? `http://localhost:5000${request.designImage}`
+    ? `${API_BASE_URL}${request.designImage}`
     : null;
 
   return (

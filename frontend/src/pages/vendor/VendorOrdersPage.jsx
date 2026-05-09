@@ -3,6 +3,8 @@ import { Search, Download, Loader2 } from "lucide-react";
 import axios from "axios";
 import { useAuth } from "@/context/AuthContext";
 import styles from "./VendorOrdersPage.module.css";
+import API_BASE_URL from "../../lib/api";
+
 const getStatusClass = (status) => {
   switch(status) {
     case "Delivered":
@@ -69,7 +71,7 @@ export default function VendorOrdersPage() {
       if (status && status !== 'All Status') params.append('status', status.toLowerCase());
       
       const response = await axios.get(
-        `http://localhost:5000/api/orders/vendor/my?${params}`,
+        `${API_BASE_URL}/api/orders/vendor/my?${params}`,
         { withCredentials: true }
       );
       
@@ -117,7 +119,7 @@ export default function VendorOrdersPage() {
       const status = orderStatuses[orderId];
       
       const response = await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/status`,
+        `${API_BASE_URL}/api/orders/${orderId}/status`,
         { status },
         { withCredentials: true }
       );

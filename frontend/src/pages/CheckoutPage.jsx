@@ -5,6 +5,8 @@ import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
 import { ArrowLeft, Truck, CreditCard, Smartphone, Building } from "lucide-react";
 import styles from "./CheckoutPage.module.css";
+import API_BASE_URL from "../lib/api";
+
 
 export default function CheckoutPage() {
   const { user } = useAuth();
@@ -81,7 +83,7 @@ export default function CheckoutPage() {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/api/orders",
+        `${API_BASE_URL}/api/orders`,
         orderData,
         { withCredentials: true }
       );

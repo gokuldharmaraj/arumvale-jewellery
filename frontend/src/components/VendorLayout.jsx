@@ -6,6 +6,8 @@ import { useAuth } from "@/context/AuthContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./VendorLayout.module.css";
+import API_BASE_URL from "../lib/api";
+
 const navItems = [{
   label: "Dashboard",
   path: "/vendor",
@@ -56,7 +58,7 @@ export default function VendorLayout() {
     const fetchOrderCount = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5000/api/orders/vendor/my',
+          `${API_BASE_URL}/api/orders/vendor/my`,
           { withCredentials: true }
         );
         setOrderCount(response.data.orders?.length || 0);

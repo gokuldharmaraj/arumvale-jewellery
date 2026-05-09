@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import axios from "axios";
 import styles from "./AdminOrdersPage.module.css";
+import API_BASE_URL from "../../lib/api";
+
 const getStatusConfig = (status) => {
   switch(status) {
     case "delivered":
@@ -69,14 +71,14 @@ export default function AdminOrdersPage() {
     const fetchOrders = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/admin/orders", {
+        const response = await axios.get(`${API_BASE_URL}/api/admin/orders`, {
           withCredentials: true
         });
         const orderList = response.data.orders || [];
         setOrders(orderList);
         
         // Fetch stats from admin endpoint
-        const statsResponse = await axios.get("http://localhost:5000/api/admin/orders/stats", {
+        const statsResponse = await axios.get(`${API_BASE_URL}/api/admin/orders/stats`, {
           withCredentials: true
         });
         const statsData = statsResponse.data;
@@ -118,7 +120,7 @@ export default function AdminOrdersPage() {
   const handleViewOrder = async (order) => {
     try {
       setActionLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/admin/orders/${order._id}`, {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/orders/${order._id}`, {
         withCredentials: true
       });
       setSelectedOrder(response.data);

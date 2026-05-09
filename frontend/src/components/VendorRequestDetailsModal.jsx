@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Clock, Store, FileText, AlertCircle, CheckCircle, XCircle, Package, Truck, Eye, User, Send } from "lucide-react";
+import API_BASE_URL from "../lib/api";
 
 const getStatusConfig = (status) => {
   switch(status) {
@@ -172,7 +173,7 @@ export default function VendorRequestDetailsModal({
                 </h4>
                 <div className="rounded-lg overflow-hidden border">
                   <img
-                    src={`http://localhost:5000${request.designImage}`}
+                    src={`${API_BASE_URL}${request.designImage}`}
                     alt="Design Reference"
                     className="w-full h-auto max-h-96 object-contain bg-muted/20"
                     onError={(e) => {
