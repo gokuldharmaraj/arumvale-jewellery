@@ -120,7 +120,7 @@ export const registerUser = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
     });
 
@@ -170,7 +170,7 @@ export const registerUser = async (req, res) => {
             <p>Thank you for registering with us. Your account has been created successfully.</p>
             <p>You can now log in and start exploring our beautiful jewellery collection.</p>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="http://localhost:5173/login" style="background: #d4af37; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block;">
+              <a href="${process.env.FRONTEND_URL}/login" style="background: #d4af37; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block;">
                 Login to Your Account
               </a>
             </div>
@@ -184,7 +184,7 @@ export const registerUser = async (req, res) => {
             </p>
           </div>
         `,
-        text: `Welcome to Arumvale Jewellery!\n\nDear ${firstName},\n\nThank you for registering with us. Your account has been created successfully.\n\nYou can now log in and start exploring our beautiful jewellery collection.\n\nLogin here: http://localhost:5173/login\n\nBest regards,\nThe Arumvale Jewellery Team`,
+        text: `Welcome to Arumvale Jewellery!\n\nDear ${firstName},\n\nThank you for registering with us. Your account has been created successfully.\n\nYou can now log in and start exploring our beautiful jewellery collection.\n\nLogin here: ${process.env.FRONTEND_URL}/login\n\nBest regards,\nThe Arumvale Jewellery Team`,
       });
     } catch (emailError) {
       console.error("Welcome email error:", emailError);
@@ -218,7 +218,7 @@ export const loginUser = async (req, res) => {
       res.cookie("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
       });
       res.json({
@@ -245,10 +245,12 @@ export const loginUser = async (req, res) => {
 };
 
 export const logoutUser = (req, res) => {
-  res.cookie("token", "", {
-    httpOnly: true,
-    expires: new Date(0),
-  });
+ res.cookie("token", "", {
+   httpOnly: true,
+   secure: process.env.NODE_ENV === "production",
+   sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+   expires: new Date(0),
+ });
   res.status(200).json({ message: "Logged out sucessfully" });
 };
 

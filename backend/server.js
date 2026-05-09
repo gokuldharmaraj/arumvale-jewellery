@@ -21,6 +21,7 @@ import "./models/Product.js";
 import "./models/Order.js";
 import "./models/Review.js";
 import "./models/CustomRequest.js";
+
 dotenv.config();
 connectDB();
 const app = express();
@@ -29,7 +30,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:8080", "http://localhost:5173"],
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   }),
 );
