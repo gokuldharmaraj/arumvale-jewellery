@@ -32,6 +32,7 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:5173",
   "https://arumvale-jewellery.vercel.app",
+  
 ];
 
 app.use(
