@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CompareProvider } from "@/context/CompareContext";
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
+import { Analytics } from "@vercel/analytics/react";
 import CustomerLayout from "@/components/CustomerLayout";
 import VendorLayout from "@/components/VendorLayout";
 import AdminLayout from "@/components/AdminLayout";
@@ -48,6 +49,7 @@ const App = () => <QueryClientProvider client={queryClient}>
           <CompareProvider>
             <Toaster />
             <Sonner />
+            <Analytics />
             <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <Routes>
             {/* Customer */}
