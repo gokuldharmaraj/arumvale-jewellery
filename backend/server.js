@@ -28,11 +28,17 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://arumvale-jewellery.vercel.app",
+];
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: allowedOrigins,
     credentials: true,
-  }),
+  })
 );
 
 app.use("/api/auth", authRoutes);
