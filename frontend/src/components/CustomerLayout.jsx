@@ -40,6 +40,7 @@ export default function CustomerLayout() {
   const {
     user,
     isLoggedIn,
+    loading,
     logout
   } = useAuth();
   const { getCartItemCount } = useCart();
@@ -76,13 +77,19 @@ export default function CustomerLayout() {
           })}
 
             {/* Profile Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className={`${styles.navLink} ${location.pathname === "/profile" ? styles.active : ''}`}>
-                  <User className="h-4 w-4" />
-                  Account
-                </button>
-              </DropdownMenuTrigger>
+            {loading ? (
+              <div className={`${styles.navLink} opacity-50`}>
+                <div className="h-4 w-4 bg-gray-300 rounded animate-pulse" />
+                <div className="h-4 w-16 bg-gray-300 rounded animate-pulse ml-2" />
+              </div>
+            ) : (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className={`${styles.navLink} ${location.pathname === "/profile" ? styles.active : ''}`}>
+                    <User className="h-4 w-4" />
+                    Account
+                  </button>
+                </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 {isLoggedIn ? <>
                     {/* Role-based menu items */}
@@ -145,6 +152,7 @@ export default function CustomerLayout() {
                   </>}
               </DropdownMenuContent>
             </DropdownMenu>
+            )}
           </nav>
 
           {/* Mobile menu button */}

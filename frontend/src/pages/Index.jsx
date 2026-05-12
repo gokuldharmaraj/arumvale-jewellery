@@ -52,6 +52,10 @@ export default function Index() {
   } = useAuth();
 
   useEffect(() => {
+
+      const img = new Image();
+      img.src = heroBanner;
+
     const fetchProducts = async () => {
       try {
         setLoading(true);
@@ -68,16 +72,10 @@ export default function Index() {
 
   const filtered = activeCategory === "All" ? products : products.filter(p => p.category === activeCategory);
 
-  if (loading) {
-    return <div className="container py-20 text-center">
-        <Loader2 className="animate-spin h-8 w-8 mx-auto mb-4 text-primary" />
-        <p className="text-muted-foreground">Loading products...</p>
-      </div>;
-  }
-  return <div>
+    return <div>
       {/* Hero */}
       <section className="relative h-[80vh] min-h-[560px] overflow-hidden">
-        <img src={heroBanner} alt="Luxury Jewellery Collection" className="absolute inset-0 w-full h-full object-cover scale-105" />
+        <img src={heroBanner} alt="Luxury Jewellery Collection" className="absolute inset-0 w-full h-full object-cover scale-100" width="1920" height="1080" loading="eager" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/80 via-luxury-black/50 to-luxury-black/90" />
         
         {/* Decorative corner accents */}
@@ -150,7 +148,26 @@ export default function Index() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map(product => <ProductCard key={product._id} product={product} />)}
+          {loading ? (
+            // Skeleton placeholders for product cards
+            Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="bg-card rounded-xl border border-border overflow-hidden">
+                <div className="relative aspect-square overflow-hidden bg-muted">
+                  <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                </div>
+                <div className="p-4">
+                  <div className="h-4 bg-gray-200 rounded animate-pulse mb-2" />
+                  <div className="h-4 bg-gray-200 rounded animate-pulse w-3/4 mb-4" />
+                  <div className="flex items-center justify-between">
+                    <div className="h-5 bg-gray-200 rounded animate-pulse w-20" />
+                    <div className="h-4 bg-gray-200 rounded animate-pulse w-16" />
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            filtered.map(product => <ProductCard key={product._id} product={product} />)
+          )}
         </div>
 
         <div className="text-center mt-10">
